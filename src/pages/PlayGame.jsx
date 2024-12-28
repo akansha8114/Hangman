@@ -28,7 +28,7 @@ function PlayGame() {
     
     return(
         <>
-            <h1>Play Game </h1>
+            <h1>Play Game hello</h1>
             <Maskedtext text={state.wordSelected} guessedLetters={guessedLetters} />
             <div>
                 <LetterButtons text={state.wordSelected} guessedLetters={guessedLetters} onLetterClick={handleLetterClick} />
