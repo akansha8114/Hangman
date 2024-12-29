@@ -12,7 +12,7 @@ function PlayGame() {
     const [step, setStep] = useState(0); //hangman ke images me change aae to update krne ke lie
 
     function handleLetterClick(letter) {
-        if(state.wordSelected.toUpperCase().includes(letter)){
+        if(state?.wordSelected?.toUpperCase().includes(letter)){
             console.log("Correct Guess");
         }
         else{
@@ -28,8 +28,10 @@ function PlayGame() {
     
     return(
         <>
-            <h1>Play Game hello</h1>
-            <Maskedtext text={state.wordSelected} guessedLetters={guessedLetters} />
+            <h1>Play Game </h1>
+            {state?.wordSelected  && ( //it tells agr word selected hoga tbhi niche wala code run hoga , it si a type of conditional rendering
+                <>
+                 <Maskedtext text={state.wordSelected} guessedLetters={guessedLetters} />
             <div>
                 <LetterButtons text={state.wordSelected} guessedLetters={guessedLetters} onLetterClick={handleLetterClick} />
             </div>
@@ -37,6 +39,9 @@ function PlayGame() {
             <div>
                 <HangMan step={step} />
             </div>
+                </>
+            )}
+            
 
             <Link to='/start' className = "text-blue-400" >Start Game Link</Link>
         </>
