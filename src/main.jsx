@@ -13,3 +13,5 @@ createRoot(document.getElementById('root')).render(
     
   </StrictMode>,
 )
+
+//Strictmode : it mostly used for debugging, ye mostly cheeje do baar call krta h id u check the console u get to know

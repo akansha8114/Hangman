@@ -42,6 +42,23 @@ function TextInputFormContainer(){
         console.log(inputtype);
     }
 
+     // useEffect(() => {
+    //     console.log("component first load"); // not call on updates
+    // }, []); // passing empty dependency array
+
+    // useEffect(() => {
+    //     console.log("component first load and update");
+    // }); // not passing dependency array
+
+    // useEffect(() => {
+        
+    //     console.log("component first load and update value changed");
+    // }, [value]);
+
+    // useEffect(() => {
+    //     console.log("component first load and inputType value changed");
+    // }, [inputType]);
+
     return (
         <TextInputForm 
           inputtype = {inputtype}

@@ -1,9 +1,12 @@
 import { Link } from "react-router-dom";
 import Button from "../components/Button/Button";
-import { useEffect } from "react";
-import { useState } from "react";
+import { useContext,useEffect } from "react";
+//import { useState } from "react";
+import { WordContext } from '../Context/WordContext.js';
+
 function Home(){
-    const [word,setWord] = useState('');
+    
+    const { setWordList ,  setWord} = useContext(WordContext); //useconetxt is a hook which is used to access the context which is created in App.js
 
 
     //this fetchword function will be called when the component mounts means jb home page load hoega tb ye fetch function load hoga
@@ -13,7 +16,7 @@ function Home(){
         const data = await response.json();
         console.log(data);
 
-        //setWordList([...data])
+        setWordList([...data])
 
         //this is for randomly generating a index number form the backened given data
 
@@ -31,12 +34,12 @@ function Home(){
 
     return (
         <>
-           <Link to='/play' state={{wordSelected:word}}>
+           <Link to='/play' >
               <Button text="Single player Game" ></Button>
            </Link>
            <br/>
 
-           <Link >
+           <Link to="/start">
               <div className = "mt-4">
                 <Button text = "Multiplayer Game" styleType="secondary"></Button>
               </div>
