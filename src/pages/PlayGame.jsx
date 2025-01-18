@@ -1,14 +1,17 @@
 import { Link } from "react-router-dom"
 import Maskedtext from "../components/MaskedText/MaskedText";
 import LetterButtons from "../components/LetterButtons/LetterButtons";
-import { useContext,useState } from "react";
+import { useState } from "react";
 import HangMan from "../components/Hangman/Hangman";
-import { WordContext } from '../Context/WordContext.js';
+//import { WordContext } from '../Context/WordContext.js';
+import WordStore from "../stores/WordStore";
 function PlayGame() {
    
     //const {state} = useLocation(); //uselocation ke help se hum state me jo v value h use destructure kr skte h
 
-    const { wordList , word } = useContext(WordContext);
+    //const {  word } = useContext(WordContext);
+
+    const {wordList, word} = WordStore() ;
 
     const [guessedLetters, setGuessedLetters] = useState([]); //we want har guessedletter ke sth  UI change ho islie ek state varaible bnadia
 
@@ -32,7 +35,9 @@ function PlayGame() {
     return(
         <>
             <h1>Play Game </h1>
-            {wordList.map(wordObject => <li key={wordObject.id}>{wordObject.wordValue}</li> )}
+            {wordList.map((word) => {
+              return <li key={word.id}>{word.wordValue}</li>
+            })}
             {word && ( //it tells agr word selected hoga tbhi niche wala code run hoga , it si a type of conditional rendering
                 <>
                  <Maskedtext text={word} guessedLetters={guessedLetters} />

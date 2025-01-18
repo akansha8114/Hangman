@@ -1,12 +1,15 @@
 import { Link } from "react-router-dom";
 import Button from "../components/Button/Button";
-import { useContext,useEffect } from "react";
+import { useEffect } from "react";
 //import { useState } from "react";
-import { WordContext } from '../Context/WordContext.js';
+//import { WordContext } from '../Context/WordContext.js';
+import WordStore from "../stores/WordStore";
 
 function Home(){
     
-    const { setWordList ,  setWord} = useContext(WordContext); //useconetxt is a hook which is used to access the context which is created in App.js
+    //const {  setWord} = useContext(WordContext); //useconetxt is a hook which is used to access the context which is created in App.js
+
+    const {setWordList,setWord} = WordStore();//coming from the store
 
 
     //this fetchword function will be called when the component mounts means jb home page load hoega tb ye fetch function load hoga
